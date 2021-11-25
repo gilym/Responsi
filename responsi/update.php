@@ -100,11 +100,39 @@ $p = mysqli_fetch_object($execute);
     <tr>
         <td>Kategori</td>
         <td>
-            <select name="kategori" id="inputState" class="form-control" >
-        <option selected value="Bangunan">Bangunan</option>
-        <option selected value="Kendaraan" >Kendaraan</option>
-        <option selected value="Alat Tulis Kantor">Alat Tulis Kantor</option>
-        <option selected value="Elektronik">Elektronik</option>
+            <select name="kategori" id="inputState"class="form-control" >
+              <?php
+              if($p->kategori=='Bangunan'){?>
+                <option   value="Bangunan" selected >Bangunan</option>
+                <option  value="Kendaraan"  >Kendaraan</option>
+                <option  value="Alat Tulis Kantor" >Alat Tulis Kantor</option>
+                <option  value="Elektronik" >Elektronik</option>
+                
+                <?php  } 
+                
+                else if($p->kategori=='Kendaraan'){?>
+                  <option   value="Bangunan"  >Bangunan</option>
+                <option  value="Kendaraan"  selected >Kendaraan</option>
+                <option  value="Alat Tulis Kantor" >Alat Tulis Kantor</option>
+                <option  value="Elektronik" >Elektronik</option>
+              <?php  } 
+              
+              else if($p->kategori=='Alat Tulis Kantor'){?>
+                  <option   value="Bangunan"  >Bangunan</option>
+                <option  value="Kendaraan"  >Kendaraan</option>
+                <option  value="Alat Tulis Kantor" selected >Alat Tulis Kantor</option>
+                <option  value="Elektronik" >Elektronik</option>
+              <?php  } 
+             
+             else if($p->kategori=='Elektronik'){?>
+                  <option   value="Bangunan"  >Bangunan</option>
+                <option  value="Kendaraan"  >Kendaraan</option>
+                <option  value="Alat Tulis Kantor" >Alat Tulis Kantor</option>
+                <option  value="Elektronik" selected >Elektronik</option>
+              <?php  }
+                
+              ?>
+       
      
        
       </select></td>
@@ -112,11 +140,11 @@ $p = mysqli_fetch_object($execute);
     <tr>
         <td>Status</td>
         <td>
-  <input type="radio" id="baik" name="status" value="Baik">
+  <input type="radio" id="baik" name="status" value="Baik" <?php if($p -> status_barang = "Baik" ) echo 'checked'?> >
   <label for="baik">Baik</label>
-  <input type="radio" id="perawatan" name="status" value="Perawatan">
+  <input type="radio" id="perawatan" name="status" <?php if($p -> status_barang = "Perawatan" ) echo 'checked'?>value="Perawatan">
   <label for="perawatan">Perawatan</label>
-  <input type="radio" id="rusak" name="status" value="Rusak">
+  <input type="radio" id="rusak" name="status" <?php if($p -> status_barang = "Rusak" ) echo 'checked'?>value="Rusak">
   <label for="rusak">Rusak</label>
         
         
@@ -136,11 +164,6 @@ $p = mysqli_fetch_object($execute);
 
 </div>
 
-
-
-
-
-    
 
 </body>
 
